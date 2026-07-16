@@ -16,7 +16,7 @@ Navigate to the project directory and execute the script via terminal.
 # Rename all files in a directory
 python renamer.py path/to/directory PREFIX
 
-# Rename only specific file types (e.g., .jpg)
+# Rename only specific file types (like .jpg)
 python renamer.py path/to/directory PREFIX --ext .jpg
 ```
 
