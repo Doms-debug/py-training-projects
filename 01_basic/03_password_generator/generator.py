@@ -6,7 +6,10 @@ all_letters = string.ascii_letters
 
 parser = argparse.ArgumentParser(
     prog='Pass-gen v3',
-    description='Generate secure passwords using python script. Declare desired number of signs.'
+    description='''
+    Generate secure passwords using python script. 
+    Declare desired number of signs.
+    '''
 )
 
 def main():
