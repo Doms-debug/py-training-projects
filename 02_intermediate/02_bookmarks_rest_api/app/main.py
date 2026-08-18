@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from pydantic import BaseModel, HttpUrl
 from typing import List, Optional
@@ -6,7 +6,6 @@ from typing import List, Optional
 from app import models
 from app.database import engine, SessionLocal
 
-# Automatically create tables
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Bookmarks API")
@@ -52,3 +51,18 @@ def create_bookmark(bookmark: BookmarkCreate, db: Session = Depends(get_db)):
     db.refresh(db_bookmark)
     
     return db_bookmark
+
+@app.delete("/bookmarks/{bookmark_id}", status_code=204)
+def delete_bookmark(bookmark_id: int, db: Session = Depends(get_db)):
+    """
+    Delete a bookmark by its ID.
+    """
+    db_bookmark = db.query(models.DBBookmark).filter(models.DBBookmark.id == bookmark_id).first()
+
+    if db_bookmark is None:
+        raise HTTPException(status_code=404, detail="Bookmark not found")
+        
+    db.delete(db_bookmark)
+    db.commit()
+    
+    return None
