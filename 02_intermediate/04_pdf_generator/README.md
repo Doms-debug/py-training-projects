@@ -32,12 +32,3 @@ Pull requests are totally welcome. If you want to add support for custom fonts, 
 ## License
 
 MIT License. Do whatever you want with it.
-
-```
-
-<ElicitationsGroup message="Where should we take this next?">
-  <Elicitation label="Add table formatting code" query="Write the actual python code using fpdf to generate a clean table for this project."/>
-  <Elicitation label="Turn this into an API" query="How can I wrap this fpdf script in a FastAPI backend so users can download PDFs via an endpoint?"/>
-</ElicitationsGroup>
-
-```
